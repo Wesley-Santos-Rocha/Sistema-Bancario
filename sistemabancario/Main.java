@@ -16,6 +16,9 @@ public class Main {
         cb1.imprimirExtrato();
         
         cb1.fazerPix(cb2, 10);
+        cb1.fazerPix(cb2, 10);
+        cb1.fazerPix(cb2, 10);
+        cb1.fazerPix(cb2, 10);
         
         cb1.imprimirExtrato();
         

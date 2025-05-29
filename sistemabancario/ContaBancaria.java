@@ -8,11 +8,13 @@ public class ContaBancaria {
     private Cliente cliente;
     private double saldo;
     private List<Movimentacao> movimentacoes;
+    private List<Movimentacao> pix;
 
     public ContaBancaria(Cliente cliente) {
         this.cliente = cliente;
         this.saldo = 0;
         this.movimentacoes = new ArrayList<>();
+        this.pix = new ArrayList<>();
     }
     
     public void depositar(double deposito) {
@@ -28,9 +30,13 @@ public class ContaBancaria {
     }
 
     public void fazerPix(ContaBancaria cb, double valor) {
-        if (this.cliente.getCpf() != cb.cliente.getCpf()) {
+        if(this.pix.size() >= 3 && (valor == this.pix.get(this.pix.size() - 1).getValor() && valor == this.pix.get(this.pix.size() - 2).getValor()
+             && valor == this.pix.get(this.pix.size() - 3).getValor())) {
+            System.err.println("\nComportamento suspeito. Transação não realizada.\n");
+        } else if (this.cliente.getCpf() != cb.cliente.getCpf()) {
             this.saldo -= valor;
             cb.saldo += valor;
+            pix.add(new Movimentacao(this.cliente.getNome(), cb.cliente.getNome(), "Transferência Pix", valor));
             movimentacoes.add(new Movimentacao(this.cliente.getNome(), cb.cliente.getNome(), "Transferência Pix", valor));
         }
     }
