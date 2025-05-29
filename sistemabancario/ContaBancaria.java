@@ -26,11 +26,20 @@ public class ContaBancaria {
             movimentacoes.add(new Movimentacao("Saque", saque));
         }
     }
+
+    public void fazerPix(ContaBancaria cb, double valor) {
+        if (this.cliente.getCpf() != cb.cliente.getCpf()) {
+            this.saldo -= valor;
+            cb.saldo += valor;
+            movimentacoes.add(new Movimentacao(this.cliente.getNome(), cb.cliente.getNome(), "Transferência Pix", valor));
+        }
+    }
     
     public void imprimirExtrato() {
+        System.out.println("===EXTRATO===");
         System.out.println("Extrato da conta de " + this.cliente.getNome());
         for(Movimentacao m : movimentacoes) {
-            System.out.println(m);
+            System.out.println(m + "\n");
         }
         System.out.println("Saldo: " + this.saldo);
     }
