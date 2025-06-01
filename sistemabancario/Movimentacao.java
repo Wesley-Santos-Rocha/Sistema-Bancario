@@ -1,22 +1,28 @@
 package sistemabancario;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class Movimentacao {
     
     private String remetente;
     private String destinatario;
     private String tipo;
     private double valor;
+    private LocalTime hora;
 
-    public Movimentacao(String tipo, double valor) {
+    public Movimentacao(String tipo, double valor, LocalTime hora) {
         this.tipo = tipo;
         this.valor = valor;
+        this.hora = hora;
     }
 
-    public Movimentacao(String remetente, String destinatario, String tipo, double valor) {
+    public Movimentacao(String remetente, String destinatario, String tipo, double valor, LocalTime hora) {
         this.remetente = remetente;
         this.destinatario = destinatario;
         this.tipo = tipo;
         this.valor = valor;
+        this.hora = hora;
     }
 
     public String getTipo() {
@@ -35,13 +41,24 @@ public class Movimentacao {
         this.valor = valor;
     }
 
+    public LocalTime getHora() {
+        return this.hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
+    }
+
     @Override
     public String toString() {
         
+        LocalTime hora = LocalTime.now().withNano(0);
+        String horaString = hora.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        
         if (this.tipo == "Depósito" || this.tipo == "Saque") {
-            return this.tipo + ": R$" + this.valor; 
+            return this.tipo + ": R$" + this.valor + " às " + horaString; 
         } else {
-            return this.tipo + ": R$" + this.valor + "\nRemetente: " + 
+            return this.tipo + ": R$" + this.valor  + " às " + horaString + "\nRemetente: " + 
                 this.remetente + "\nDestinatário: " + this.destinatario; 
         }
         
