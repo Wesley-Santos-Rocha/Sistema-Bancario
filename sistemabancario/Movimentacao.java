@@ -61,7 +61,7 @@ public class Movimentacao {
             return this.tipo + ": R$" + this.valor  + " às " + horaString + "\nRemetente: " + 
                 this.remetente + "\nDestinatário: " + this.destinatario; 
         }
-        
+
     }
     
 }
