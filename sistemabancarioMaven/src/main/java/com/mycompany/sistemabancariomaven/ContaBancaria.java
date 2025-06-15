@@ -1,9 +1,9 @@
-package com.mycompany.a3maven;
+package com.mycompany.sistemabancariomaven;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalTime;
-import com.mycompany.a3maven.modelo.ContaBancariaDAO;
+import com.mycompany.sistemabancariomaven.modelo.ContaBancariaDAO;
 
 public class ContaBancaria {
     
@@ -23,7 +23,7 @@ public class ContaBancaria {
     public void depositar(double deposito) {
         LocalTime hora = LocalTime.now().withNano(0);
         this.saldo += deposito;
-        movimentacoes.add(new Movimentacao("Depósito", deposito, hora));
+        movimentacoes.add(new Movimentacao("DepÃ³sito", deposito, hora));
         ContaBancariaDAO dao = new ContaBancariaDAO();
         dao.deposito(this.cliente.getCpf(), deposito);
     }
@@ -36,7 +36,7 @@ public class ContaBancaria {
             ContaBancariaDAO dao = new ContaBancariaDAO();
             dao.saque(this.cliente.getCpf(), saque);
         } else {
-            System.out.println("Saldo indisponível");
+            System.out.println("Saldo indisponï¿½vel");
         }
     }
     
@@ -50,29 +50,28 @@ public class ContaBancaria {
         LocalTime hora = LocalTime.now().withNano(0);
         LocalTime meianoite = LocalTime.MIDNIGHT;
         LocalTime quatroam = LocalTime.of(4, 0);
-        LocalTime x = LocalTime.now();
         
         if(this.pix.size() >= 3){
             if(valor == this.pix.get(this.pix.size() - 1).getValor() 
             && valor == this.pix.get(this.pix.size() - 2).getValor()
             && valor == this.pix.get(this.pix.size() - 3).getValor()){
-                System.err.println("\nComportamento suspeito - repetido de valores. Transação não realizada.\n");
+                System.err.println("\nComportamento suspeito - repetido de valores. TransaÃ§Ã£o nÃ£o realizada.\n");
             }
         } else if (valor > 2000) {
-            System.err.println("\nComportamento suspeito - valor alto. Transação não realizada.\n");
+            System.err.println("\nComportamento suspeito - valor alto. TransaÃ§Ã£o nÃ£o realizada.\n");
         } else if (hora.isAfter(meianoite) || hora.equals(meianoite) && hora.isBefore(quatroam)) {
-            System.err.println("\nComportamento suspeito - horário incomum.\n");
+            System.err.println("\nComportamento suspeito - horÃ¡rio incomum.\n");
             this.saldo -= valor;
             cb.saldo += valor;
-            pix.add(new Movimentacao(this.cliente.getNome(), cb.cliente.getNome(), "Transferência Pix", valor, hora));
-            movimentacoes.add(new Movimentacao(this.cliente.getNome(), cb.cliente.getNome(), "Transferência Pix", valor, hora));
+            pix.add(new Movimentacao(this.cliente.getNome(), cb.cliente.getNome(), "TransferÃªncia Pix", valor, hora));
+            movimentacoes.add(new Movimentacao(this.cliente.getNome(), cb.cliente.getNome(), "TransferÃªncia Pix", valor, hora));
             ContaBancariaDAO dao = new ContaBancariaDAO();
             dao.pix(this.cliente.getCpf(), cb.cliente.getCpf(), valor);
         } else if (!this.cliente.getCpf().equals(cb.cliente.getCpf()) && this.saldo >= valor) {
             this.saldo -= valor;
             cb.saldo += valor;
-            pix.add(new Movimentacao(this.cliente.getNome(), cb.cliente.getNome(), "Transferência Pix", valor, hora));
-            movimentacoes.add(new Movimentacao(this.cliente.getNome(), cb.cliente.getNome(), "Transferência Pix", valor, hora));
+            pix.add(new Movimentacao(this.cliente.getNome(), cb.cliente.getNome(), "TransferÃªncia Pix", valor, hora));
+            movimentacoes.add(new Movimentacao(this.cliente.getNome(), cb.cliente.getNome(), "TransferÃªncia Pix", valor, hora));
             ContaBancariaDAO dao = new ContaBancariaDAO();
             dao.pix(this.cliente.getCpf(), cb.cliente.getCpf(), valor);
         }

@@ -1,4 +1,4 @@
-package sistemabancario;
+package com.mycompany.sistemabancariomaven;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -10,6 +10,7 @@ public class Movimentacao {
     private String tipo;
     private double valor;
     private LocalTime hora;
+
 
     public Movimentacao(String tipo, double valor, LocalTime hora) {
         this.tipo = tipo;
@@ -61,7 +62,7 @@ public class Movimentacao {
             return this.tipo + ": R$" + this.valor  + " às " + horaString + "\nRemetente: " + 
                 this.remetente + "\nDestinatário: " + this.destinatario; 
         }
-
+        
     }
     
 }

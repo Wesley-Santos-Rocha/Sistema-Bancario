@@ -1,11 +1,11 @@
-package com.mycompany.a3maven;
+package com.mycompany.sistemabancariomaven;
 
-import com.mycompany.a3maven.modelo.ContaBancariaDAO;
+import com.mycompany.sistemabancariomaven.modelo.ContaBancariaDAO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class A3Maven {
+public class SistemaBancarioMaven {
 
     public static void main(String[] args) {
 
@@ -48,7 +48,7 @@ public class A3Maven {
 
         do {
             System.out.printf("---MENU DO %s---\n", c1.getNome());
-            System.out.printf("Qual atividade você gostaria de realizar, %s?\n", c1.getNome());
+            System.out.printf("Qual atividade vocÃª gostaria de realizar, %s?\n", c1.getNome());
             System.out.println("[1] - Sair\n[2] - Depositar\n[3] - Sacar\n[4] - Fazer Pix\n[5] - Imprimir Extrato");
             System.out.print("Escolha: ");
             escolha = teclado.nextInt();
@@ -62,7 +62,7 @@ public class A3Maven {
                     System.exit(0);
                     break;
                 case 2:
-                    System.out.print("Valor do Depósito: ");
+                    System.out.print("Valor do DepÃ³sito: ");
                     double valord = teclado.nextDouble();
                     cb1.depositar(valord);
                     break;
@@ -73,14 +73,14 @@ public class A3Maven {
                     break;
                 case 4:
                     teclado.nextLine();
-                    System.out.println("---Contas Bancárias disponíveis---");
+                    System.out.println("---Contas BancÃ¡rias disponÃ­veis---");
                     for(ContaBancaria cb : lcb) {
                         if(cb != cb1) {
                             System.out.printf("- %s\n", cb.getCliente().getNome());
                         }
                     }
                     System.out.println("----------------------------------");
-                    System.out.print("Destinatário: ");
+                    System.out.print("DestinatÃ¡rio: ");
                     String cb = teclado.nextLine();
                     System.out.print("Valor do Pix: ");
                     double valorp = teclado.nextDouble();
@@ -89,14 +89,14 @@ public class A3Maven {
                             cb1.fazerPix(maria, valorp);
                             break;
                         default:
-                            System.out.println("Conta Indisponível");
+                            System.out.println("Conta IndisponÃ­vel");
                     }
                     break;
                 case 5:
                     cb1.imprimirExtrato();
                     break;
                 default:
-                    System.out.println("Escolha indisponível");
+                    System.out.println("Escolha indisponÃ­vel");
 
             }
         } while(escolha != 1);

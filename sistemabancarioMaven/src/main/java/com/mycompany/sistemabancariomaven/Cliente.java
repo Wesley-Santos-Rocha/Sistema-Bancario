@@ -1,6 +1,6 @@
-package com.mycompany.a3maven;
+package com.mycompany.sistemabancariomaven;
 
-import com.mycompany.a3maven.modelo.ClienteDAO;
+import com.mycompany.sistemabancariomaven.modelo.ClienteDAO;
 
 public class Cliente {
     

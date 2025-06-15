@@ -1,4 +1,4 @@
-package com.mycompany.a3maven.modelo;
+package com.mycompany.sistemabancariomaven.modelo;
 
 import java.sql.*;
 

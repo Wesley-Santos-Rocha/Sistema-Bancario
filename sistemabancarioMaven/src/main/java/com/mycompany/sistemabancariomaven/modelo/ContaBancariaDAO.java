@@ -1,4 +1,4 @@
-package com.mycompany.a3maven.modelo;
+package com.mycompany.sistemabancariomaven.modelo;
 
 import java.sql.*;
 
@@ -15,7 +15,7 @@ public class ContaBancariaDAO {
             conn = DriverManager.getConnection(URL, USUARIO, SENHA);
             System.out.println("Conectado");
         } catch (ClassNotFoundException e) {
-            System.out.println("Driver do Banco de Dados não localizado: " + e.getMessage());
+            System.out.println("Driver do Banco de Dados nï¿½o localizado: " + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Ocorreu um erro ao acessar o banco: " + e.getMessage());
         }
@@ -41,7 +41,7 @@ public class ContaBancariaDAO {
             PreparedStatement stmtInsert = conn.prepareStatement(sqlInsert);
             stmtInsert.setString(1, cpfconta);
             stmtInsert.setDouble(2, valor);
-            stmtInsert.setString(3, "Depósito");
+            stmtInsert.setString(3, "Depï¿½sito");
             stmtInsert.executeUpdate();
             stmtInsert.close();
             String sqlUpdate = "UPDATE Contas SET saldo = saldo + ? WHERE cpf = ?;";
@@ -51,9 +51,9 @@ public class ContaBancariaDAO {
             stmtUpdate.executeUpdate();
             stmtUpdate.close();
             conn.close();
-            System.out.println("Depósito realizado com sucesso!");
+            System.out.println("Depï¿½sito realizado com sucesso!");
         } catch (ClassNotFoundException e) {
-            System.out.println("Driver do Banco de Dados não localizado: " + e.getMessage());
+            System.out.println("Driver do Banco de Dados nï¿½o localizado: " + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Ocorreu um erro ao acessar o banco: " + e.getMessage());
         }
@@ -71,7 +71,7 @@ public class ContaBancariaDAO {
             stmtInsert.setString(3, "Saque");
             stmtInsert.executeUpdate();
             stmtInsert.close();
-            System.out.println("Movimentação inserida no banco de dados");
+            System.out.println("Movimentaï¿½ï¿½o inserida no banco de dados");
             String sqlUpdate = "UPDATE Contas SET saldo = saldo - ? WHERE cpf = ?;";
             PreparedStatement stmtUpdate = conn.prepareStatement(sqlUpdate);
             stmtUpdate.setDouble(1, valor);
@@ -81,7 +81,7 @@ public class ContaBancariaDAO {
             conn.close();
             System.out.println("Saque realizado com sucesso!");
         } catch (ClassNotFoundException e) {
-            System.out.println("Driver do Banco de Dados não localizado: " + e.getMessage());
+            System.out.println("Driver do Banco de Dados nï¿½o localizado: " + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Ocorreu um erro ao acessar o banco: " + e.getMessage());
         }
@@ -112,9 +112,9 @@ public class ContaBancariaDAO {
             stmtUpdate2.executeUpdate();
             stmtUpdate2.close();
             conn.close();
-            System.out.println("Transação realizada com sucesso!");
+            System.out.println("Transaï¿½ï¿½o realizada com sucesso!");
         } catch (ClassNotFoundException e) {
-            System.out.println("Driver do Banco de Dados não localizado: " + e.getMessage());
+            System.out.println("Driver do Banco de Dados nï¿½o localizado: " + e.getMessage());
         } catch (SQLException e) {
             System.out.println("Ocorreu um erro ao acessar o banco: " + e.getMessage());
         }
@@ -140,9 +140,9 @@ public class ContaBancariaDAO {
             conn.close();
             System.out.println("Tabela Contas resetada!");
         } catch (ClassNotFoundException e) {
-            System.out.println("Driver do Banco de Dados não localizado: " + e.getMessage());
+            System.out.println("Driver do Banco de Dados nï¿½o localizado: " + e.getMessage());
         } catch (SQLException e) {
-            System.out.println("Ocorreu um erro ao acessar o banco/não há constraints: " + e.getMessage());
+            System.out.println("Ocorreu um erro ao acessar o banco/nï¿½o hï¿½ constraints: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
@@ -172,27 +172,27 @@ public class ContaBancariaDAO {
             PreparedStatement stmtFK2 = conn.prepareStatement(sqlFK2);
             stmtFK2.executeUpdate();
             stmtFK2.close();
-            String sqlTruncate = "TRUNCATE TABLE Contas;";
+            String sqlTruncate = "TRUNCATE TABLE Movimentacoes;";
             PreparedStatement stmtTruncate = conn.prepareStatement(sqlTruncate);
             stmtTruncate.executeUpdate();
             stmtTruncate.close();
             conn.close();
-            System.out.println("Tabela Movimentações resetada!");
+            System.out.println("Tabela Movimentaï¿½ï¿½es resetada!");
         } catch (ClassNotFoundException e) {
-            System.out.println("Driver do Banco de Dados não localizado: " + e.getMessage());
+            System.out.println("Driver do Banco de Dados nï¿½o localizado: " + e.getMessage());
         } catch (SQLException e) {
-            System.out.println("Ocorreu um erro ao acessar o banco/não há constraints: " + e.getMessage());
+            System.out.println("Ocorreu um erro ao acessar o banco/nï¿½o hï¿½ constraints: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
         
         try {
-            String sqlTruncate = "TRUNCATE TABLE Contas;";
+            String sqlTruncate = "TRUNCATE TABLE Movimentacoes;";
             PreparedStatement stmtTruncate = conn.prepareStatement(sqlTruncate);
             stmtTruncate.executeUpdate();
             stmtTruncate.close();
             conn.close();
-            System.out.println("Tabela Movimentações resetada!");
+            System.out.println("Tabela Movimentaï¿½ï¿½es resetada!");
         } catch (SQLException e) {
             System.out.println("Erro ao truncar tabela: " + e.getMessage());
         }
