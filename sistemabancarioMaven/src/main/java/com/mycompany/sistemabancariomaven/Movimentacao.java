@@ -56,11 +56,11 @@ public class Movimentacao {
         LocalTime hora = LocalTime.now().withNano(0);
         String horaString = hora.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
         
-        if (this.tipo == "Depósito" || this.tipo == "Saque") {
-            return this.tipo + ": R$" + this.valor + " às " + horaString; 
+        if (this.tipo == "Dep�sito" || this.tipo == "Saque") {
+            return this.tipo + ": R$" + this.valor + " �s " + horaString; 
         } else {
-            return this.tipo + ": R$" + this.valor  + " às " + horaString + "\nRemetente: " + 
-                this.remetente + "\nDestinatário: " + this.destinatario; 
+            return this.tipo + ": R$" + this.valor  + " �s " + horaString + "\nRemetente: " + 
+                this.remetente + "\nDestinat�rio: " + this.destinatario; 
         }
         
     }

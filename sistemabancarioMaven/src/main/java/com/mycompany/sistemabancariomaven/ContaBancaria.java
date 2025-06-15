@@ -1,9 +1,11 @@
 package com.mycompany.sistemabancariomaven;
 
 import java.util.List;
+
+import com.mycompany.sistemabancariomaven.modelo.ContaBancariaDAO;
+
 import java.util.ArrayList;
 import java.time.LocalTime;
-import com.mycompany.sistemabancariomaven.modelo.ContaBancariaDAO;
 
 public class ContaBancaria {
     
@@ -36,12 +38,12 @@ public class ContaBancaria {
             ContaBancariaDAO dao = new ContaBancariaDAO();
             dao.saque(this.cliente.getCpf(), saque);
         } else {
-            System.out.println("Saldo indispon�vel");
+            System.out.println("Saldo indisponível");
         }
     }
     
     /**
-     * Transfer?ncia Pix entre contas.
+     * Transferência Pix entre contas.
      * @param cb
      * @param valor 
      */
@@ -59,7 +61,7 @@ public class ContaBancaria {
             }
         } else if (valor > 2000) {
             System.err.println("\nComportamento suspeito - valor alto. Transação não realizada.\n");
-        } else if (hora.isAfter(meianoite) || hora.equals(meianoite) && hora.isBefore(quatroam)) {
+        } else if ((hora.isAfter(meianoite) || hora.equals(meianoite)) && hora.isBefore(quatroam)) {
             System.err.println("\nComportamento suspeito - horário incomum.\n");
             this.saldo -= valor;
             cb.saldo += valor;
